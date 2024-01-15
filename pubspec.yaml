@@ -1,7 +1,7 @@
 name: app_upgrader_flutter
 description: Flutter package for prompting users to upgrade when there is a newer version of the app in the store.
 version: 1.0.0
-homepage:
+homepage: https://github.com/Eleganceinfolab/app_upgrader_flutter
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
