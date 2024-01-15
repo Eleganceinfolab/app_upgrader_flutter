@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appcastURL =
-        'https://raw.githubusercontent.com/larryaasen/upgrader/master/test/testappcast.xml';
+        'https://github.com/Eleganceinfolab/app_upgrader_flutter/blob/main/lib/testappcast.xml';
     final cfg = AppcastConfiguration(url: appcastURL, supportedOS: ['android']);
 
     return MaterialApp(

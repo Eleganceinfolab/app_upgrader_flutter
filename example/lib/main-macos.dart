@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appcastURL =
-        'https://raw.githubusercontent.com/larryaasen/upgrader/master/test/testappcast_macos.xml';
+        'https://github.com/Eleganceinfolab/app_upgrader_flutter/blob/main/lib/testappcast_macos.xml';
     final cfg = AppcastConfiguration(url: appcastURL, supportedOS: ['macos']);
 
     return MaterialApp(
