@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App Upgrader Flutter Example',
       home: AppUpgradeAlert(
-          AppUpgrader: Upgrader(
+          appUpgrader: Upgrader(
             appcastConfig: cfg,
             debugLogging: true,
           ),

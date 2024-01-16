@@ -59,11 +59,11 @@ class _MyAppState extends State<MyApp> {
         break;
       case 1:
         content = AppUpgradeAlert(
-            key: Key('ua_1'), AppUpgrader: _upgrader, child: scaffold);
+            key: Key('ua_1'), appUpgrader: _upgrader, child: scaffold);
         break;
       case 2:
         content = AppUpgradeAlert(
-            key: Key('ua_2'), AppUpgrader: _upgrader, child: scaffold);
+            key: Key('ua_2'), appUpgrader: _upgrader, child: scaffold);
         break;
       default:
     }

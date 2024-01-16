@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
           appBar: AppBar(title: Text('App Upgrader Flutter Example')),
           body: AppUpgradeAlert(
-            AppUpgrader: Upgrader(
+            appUpgrader: Upgrader(
               appcastConfig: cfg,
               debugLogging: true,
               minAppVersion: '1.1.0',

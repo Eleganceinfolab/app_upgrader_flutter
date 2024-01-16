@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
           appBar: AppBar(title: Text('App Upgrader Flutter Subclass Example')),
           body: AppUpgradeAlert(
-            AppUpgrader: MyUpgrader(),
+            appUpgrader: MyUpgrader(),
             child: Center(child: Text('Checking...')),
           )),
     );

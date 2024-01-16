@@ -3,9 +3,9 @@ import 'package:app_upgrader_flutter/app_upgrader_flutter.dart';
 
 class UpgradeBase extends StatefulWidget {
   /// The upgraders used to configure the upgrade dialog.
-  final Upgrader AppUpgrader;
+  final Upgrader appUpgrader;
 
-  const UpgradeBase(this.AppUpgrader, {Key? key}) : super(key: key);
+  const UpgradeBase(this.appUpgrader, {Key? key}) : super(key: key);
 
   Widget build(BuildContext context, UpgradeBaseState state) {
     return Container();
@@ -25,13 +25,13 @@ class UpgradeBaseState extends State<UpgradeBase> {
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
-  Future<bool> initialize() => widget.AppUpgrader.initialize();
+  Future<bool> initialize() => widget.appUpgrader.initialize();
 
   void forceUpdateState() => setState(() {});
 
   @override
   void dispose() {
-    if (widget.AppUpgrader.debugLogging) {
+    if (widget.appUpgrader.debugLogging) {
       print('AppUpgrader: dispose');
     }
     super.dispose();

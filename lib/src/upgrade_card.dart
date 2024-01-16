@@ -27,23 +27,23 @@ class AppUpgradeCard extends UpgradeBase {
   /// Describes the part of the user interface represented by this widget.
   @override
   Widget build(BuildContext context, UpgradeBaseState state) {
-    if (AppUpgrader.debugLogging) {
+    if (appUpgrader.debugLogging) {
       print('AppUpgrader: build AppUpgradeCard');
     }
 
     return StreamBuilder(
-        initialData: state.widget.AppUpgrader.evaluationReady,
-        stream: state.widget.AppUpgrader.evaluationStream,
+        initialData: state.widget.appUpgrader.evaluationReady,
+        stream: state.widget.appUpgrader.evaluationStream,
         builder: (BuildContext context,
             AsyncSnapshot<UpgraderEvaluateNeed> snapshot) {
           if ((snapshot.connectionState == ConnectionState.waiting ||
                   snapshot.connectionState == ConnectionState.active) &&
               snapshot.data != null &&
               snapshot.data!) {
-            if (AppUpgrader.shouldDisplayUpgrade()) {
+            if (appUpgrader.shouldDisplayUpgrade()) {
               return buildUpgradeCard(context, state);
             } else {
-              if (AppUpgrader.debugLogging) {
+              if (appUpgrader.debugLogging) {
                 print('AppUpgrader: AppUpgradeCard will not display');
               }
             }
@@ -54,19 +54,20 @@ class AppUpgradeCard extends UpgradeBase {
 
   /// Build the AppUpgradeCard Widget.
   Widget buildUpgradeCard(BuildContext context, UpgradeBaseState state) {
-    final appMessages = AppUpgrader.determineMessages(context);
+    final appMessages = appUpgrader.determineMessages(context);
     final title = appMessages.message(UpgraderMessage.title);
-    final message = AppUpgrader.body(appMessages);
-    final releaseNotes = AppUpgrader.releaseNotes;
-    final shouldDisplayReleaseNotes = AppUpgrader.shouldDisplayReleaseNotes();
-    if (AppUpgrader.debugLogging) {
+    final message = appUpgrader.body(appMessages);
+    final releaseNotes = appUpgrader.releaseNotes;
+    final shouldDisplayReleaseNotes = appUpgrader.shouldDisplayReleaseNotes();
+    if (appUpgrader.debugLogging) {
       print('AppUpgrader: AppUpgradeCard: will display');
       print('AppUpgrader: AppUpgradeCard: showDialog title: $title');
       print('AppUpgrader: AppUpgradeCard: showDialog message: $message');
       print(
           'AppUpgrader: AppUpgradeCard: shouldDisplayReleaseNotes: $shouldDisplayReleaseNotes');
 
-      print('AppUpgrader: AppUpgradeCard: showDialog releaseNotes: $releaseNotes');
+      print(
+          'AppUpgrader: AppUpgradeCard: showDialog releaseNotes: $releaseNotes');
     }
 
     Widget? notes;
@@ -107,28 +108,28 @@ class AppUpgradeCard extends UpgradeBase {
               ],
             ),
             actions: <Widget>[
-              if (AppUpgrader.showIgnore)
+              if (appUpgrader.showIgnore)
                 TextButton(
                     child: Text(appMessages
                             .message(UpgraderMessage.buttonTitleIgnore) ??
                         ''),
                     onPressed: () {
                       // Save the date/time as the last time alerted.
-                      AppUpgrader.saveLastAlerted();
+                      appUpgrader.saveLastAlerted();
 
-                      AppUpgrader.onUserIgnored(context, false);
+                      appUpgrader.onUserIgnored(context, false);
                       state.forceUpdateState();
                     }),
-              if (AppUpgrader.showLater)
+              if (appUpgrader.showLater)
                 TextButton(
                     child: Text(
                         appMessages.message(UpgraderMessage.buttonTitleLater) ??
                             ''),
                     onPressed: () {
                       // Save the date/time as the last time alerted.
-                      AppUpgrader.saveLastAlerted();
+                      appUpgrader.saveLastAlerted();
 
-                      AppUpgrader.onUserLater(context, false);
+                      appUpgrader.onUserLater(context, false);
                       state.forceUpdateState();
                     }),
               TextButton(
@@ -137,9 +138,9 @@ class AppUpgradeCard extends UpgradeBase {
                           ''),
                   onPressed: () {
                     // Save the date/time as the last time alerted.
-                    AppUpgrader.saveLastAlerted();
+                    appUpgrader.saveLastAlerted();
 
-                    AppUpgrader.onUserUpdated(context, false);
+                    appUpgrader.onUserUpdated(context, false);
                     state.forceUpdateState();
                   }),
             ]));

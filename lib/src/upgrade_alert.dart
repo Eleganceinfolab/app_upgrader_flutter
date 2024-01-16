@@ -8,8 +8,8 @@ class AppUpgradeAlert extends UpgradeBase {
 
   /// Creates a new [AppUpgradeAlert].
   AppUpgradeAlert(
-      {Key? key, Upgrader? AppUpgrader, this.child, this.navigatorKey})
-      : super(AppUpgrader ?? Upgrader.sharedInstance, key: key);
+      {Key? key, Upgrader? appUpgrader, this.child, this.navigatorKey})
+      : super(appUpgrader ?? Upgrader.sharedInstance, key: key);
 
   /// For use by the Router architecture as part of the RouterDelegate.
   final GlobalKey<NavigatorState>? navigatorKey;
@@ -17,20 +17,20 @@ class AppUpgradeAlert extends UpgradeBase {
   /// Describes the part of the user interface represented by this widget.
   @override
   Widget build(BuildContext context, UpgradeBaseState state) {
-    if (AppUpgrader.debugLogging) {
+    if (appUpgrader.debugLogging) {
       print('AppUpgrader: build AppUpgradeAlert');
     }
 
     return StreamBuilder(
-      initialData: state.widget.AppUpgrader.evaluationReady,
-      stream: state.widget.AppUpgrader.evaluationStream,
+      initialData: state.widget.appUpgrader.evaluationReady,
+      stream: state.widget.appUpgrader.evaluationStream,
       builder:
           (BuildContext context, AsyncSnapshot<UpgraderEvaluateNeed> snapshot) {
         if ((snapshot.connectionState == ConnectionState.waiting ||
                 snapshot.connectionState == ConnectionState.active) &&
             snapshot.data != null &&
             snapshot.data!) {
-          if (AppUpgrader.debugLogging) {
+          if (appUpgrader.debugLogging) {
             print("AppUpgrader: need to evaluate version");
           }
 
@@ -38,7 +38,7 @@ class AppUpgradeAlert extends UpgradeBase {
               navigatorKey != null && navigatorKey!.currentContext != null
                   ? navigatorKey!.currentContext!
                   : context;
-          AppUpgrader.checkVersion(context: checkContext);
+          appUpgrader.checkVersion(context: checkContext);
         }
         return child ?? const SizedBox.shrink();
       },

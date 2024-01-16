@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(title: Text('App Upgrader Flutter Example')),
         body: AppUpgradeAlert(
-          AppUpgrader: Upgrader(
+          appUpgrader: Upgrader(
             customDialog: true,
             isDefaultButton: false,
             debugLogging: true,

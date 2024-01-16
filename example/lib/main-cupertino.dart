@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
           appBar: AppBar(title: Text('App Upgrader Flutter Cupertino Example')),
           body: AppUpgradeAlert(
-            AppUpgrader: Upgrader(
+            appUpgrader: Upgrader(
               appcastConfig: cfg,
               debugLogging: true,
               dialogStyle: UpgradeDialogStyle.cupertino,

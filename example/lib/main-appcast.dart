@@ -26,9 +26,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App Upgrader Flutter Example',
       home: Scaffold(
-          appBar: AppBar(title: Text('App Upgrader Flutter Appcast Example')),
+          appBar: AppBar(
+              title: Text('App Upgrader FlutterappUpgrader Appcast Example')),
           body: AppUpgradeAlert(
-            AppUpgrader: Upgrader(
+            appUpgrader: Upgrader(
               appcastConfig: cfg,
               debugLogging: true,
             ),
